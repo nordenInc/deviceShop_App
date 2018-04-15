@@ -1,3 +1,5 @@
+package ru.softwerke;
+
 import ru.softwerke.view.InitMenu;
 
 import java.text.ParseException;
