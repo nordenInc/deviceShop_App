@@ -1,29 +1,22 @@
-package ru.softwerke.tables;
+package ru.softwerke.model;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "client")
 public class Client {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "client_id_generator")
-    @SequenceGenerator(name = "client_id_generator", sequenceName = "client_id")
+    private static int id = 0;
     private int clientId;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(name = "middle_name")
     private String middleName;
-
-    @Column(name = "date_of_birth")
     private LocalDate birthDate;
+
+    public Client(String firstName, String lastName, String middleName, LocalDate birthDate) {
+        this.clientId = id++;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.birthDate = birthDate;
+    }
 
     public Client() {}
 
@@ -51,13 +44,9 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
+    public String getMiddleName() {return middleName; }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
+    public void setMiddleName(String middleName) { this.middleName = middleName; }
 
     public LocalDate getBirthDate() {
         return birthDate;
