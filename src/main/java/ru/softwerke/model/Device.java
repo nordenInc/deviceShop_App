@@ -13,17 +13,62 @@ public class Device {
     private LocalDate releaseDate;
     private BigDecimal price;
 
-    public Device(String manufacturer, String deviceType, String deviceModel, String deviceColor, LocalDate releaseDate, BigDecimal price) {
+    private Device(Builder builder) {
         this.deviceId = id++;
-        this.manufacturer = manufacturer;
-        this.deviceType = deviceType;
-        this.deviceModel = deviceModel;
-        this.deviceColor = deviceColor;
-        this.releaseDate = releaseDate;
-        this.price = price;
+        this.manufacturer = builder.manufacturer;
+        this.deviceType = builder.deviceType;
+        this.deviceModel = builder.deviceModel;
+        this.deviceColor = builder.deviceColor;
+        this.releaseDate = builder.releaseDate;
+        this.price = builder.price;
     }
 
-    public Device() {}
+    public static class Builder {
+        private int deviceId;
+        private String manufacturer;
+        private String deviceType;
+        private String deviceModel;
+        private String deviceColor;
+        private LocalDate releaseDate;
+        private BigDecimal price;
+
+        public Builder(){}
+
+        public Builder setManufacturer(String manufacturer) {
+            this.manufacturer = manufacturer;
+            return this;
+        }
+
+        public Builder setDeviceType(String deviceType) {
+            this.deviceType = deviceType;
+            return this;
+        }
+
+        public Builder setDeviceModel(String deviceModel) {
+            this.deviceModel = deviceModel;
+            return this;
+        }
+
+        public Builder setDeviceColor(String deviceColor) {
+            this.deviceColor = deviceColor;
+            return this;
+        }
+
+        public Builder setReleaseDate(LocalDate releaseDate) {
+            this.releaseDate = releaseDate;
+            return this;
+        }
+
+        public Builder setPrice(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Device build() {
+            return new Device(this);
+        }
+    }
+
 
     public int getDeviceId() {
         return deviceId;

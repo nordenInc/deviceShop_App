@@ -1,11 +1,8 @@
 package ru.softwerke.view;
 
-import ru.softwerke.controller.Reader;
+import ru.softwerke.tools.ReadWriter;
 
-import java.text.ParseException;
-import java.util.Scanner;
-
-public class InitMenu implements Reader {
+public class InitMenu {
 
     private ClientMenu clientMenu;
     private DeviceMenu deviceMenu;
@@ -15,13 +12,13 @@ public class InitMenu implements Reader {
         this.deviceMenu = new DeviceMenu();
     }
 
-    public void showInitMenu() throws ParseException {
+    public void showInitMenu() {
         System.out.println("Select one item to continue: \n" +
                             "1. Client info \n" +
                             "2. Device info \n" +
                             "3. Sales history \n" +
                             "4. Search");
-        String operation = readLine();
+        String operation = ReadWriter.readLine();
         switch (operation) {
             case "1":
                 clientMenu.showClientsMenu();
@@ -35,10 +32,4 @@ public class InitMenu implements Reader {
         }
     }
 
-    @Override
-    public String readLine() {
-        Scanner scanner = new Scanner(System.in);
-        String string = scanner.nextLine();
-        return string;
-    }
 }

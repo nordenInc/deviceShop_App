@@ -1,14 +1,11 @@
 package ru.softwerke.controller;
 
+import ru.softwerke.view.ClientMenu;
+import ru.softwerke.view.DeviceMenu;
 import ru.softwerke.view.InitMenu;
 
-import java.text.ParseException;
-import java.util.Scanner;
-
 public class InitController {
-
     InitMenu initMenu = new InitMenu();
-
-    public InitController() {}
-
+    ClientMenu clientMenu = new ClientMenu();
+    DeviceMenu deviceMenu = new DeviceMenu();
 }
