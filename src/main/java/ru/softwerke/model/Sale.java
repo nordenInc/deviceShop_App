@@ -2,7 +2,7 @@ package ru.softwerke.model;
 
 import java.time.LocalDate;
 
-public class ClientSale {
+public class Sale {
 
     private static int id = 0;
     private int clientSaleId;
@@ -10,14 +10,14 @@ public class ClientSale {
     private Device device;
     private LocalDate localDate;
 
-    public ClientSale(Client client, Device device, LocalDate localDate) {
+    public Sale(Client client, Device device, LocalDate localDate) {
         this.clientSaleId = id++;
         this.client = client;
         this.device = device;
         this.localDate = localDate;
     }
 
-    public ClientSale() {}
+    public Sale() {}
 
 
     public int getClientSaleId() {

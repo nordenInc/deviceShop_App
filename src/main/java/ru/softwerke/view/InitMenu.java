@@ -13,11 +13,11 @@ public class InitMenu {
     }
 
     public void showInitMenu() {
-        System.out.println("Select one item to continue: \n" +
-                            "1. Client info \n" +
-                            "2. Device info \n" +
-                            "3. Sales history \n" +
-                            "4. Search");
+        ReadWriter.printLine("Select one item to continue: \n" +
+                "1. Client info \n" +
+                "2. Device info \n" +
+                "3. Sales history \n" +
+                "4. Search");
         String operation = ReadWriter.readLine();
         switch (operation) {
             case "1":

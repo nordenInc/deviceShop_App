@@ -69,7 +69,6 @@ public class Device {
         }
     }
 
-
     public int getDeviceId() {
         return deviceId;
     }
@@ -120,5 +119,17 @@ public class Device {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Device: " +
+                "deviceId= " + deviceId +
+                ", manufacturer= '" + manufacturer + '\'' +
+                ", deviceType= '" + deviceType + '\'' +
+                ", deviceModel= '" + deviceModel + '\'' +
+                ", deviceColor= '" + deviceColor + '\'' +
+                ", releaseDate= " + releaseDate +
+                ", price= " + price + "";
     }
 }

@@ -23,7 +23,7 @@ public class Client {
 //        this.birthDate = birthDate;
 //    }
 
-//    public Client() {}
+    public Client() {}
 
     private Client(Builder builder) {
         this.clientId = id++;
@@ -104,9 +104,17 @@ public class Client {
         this.birthDate = birthDate;
     }
 
+    @Override
+    public String toString() {
+        return "Client: " +
+                "Id= " + clientId +
+                ", Name= '" + firstName + '\'' +
+                ", Surname= '" + lastName + '\'' +
+                ", Middle name = '" + middleName + '\'' +
+                ", Date of birth - '" + birthDate +"'";
+    }
 
-
-//    private final AtomicLong value = new AtomicLong(0L);
+    //    private final AtomicLong value = new AtomicLong(0L);
 //    public long get() {
 //        return value.get();
 //    }

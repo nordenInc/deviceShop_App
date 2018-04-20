@@ -1,6 +1,6 @@
 package ru.softwerke.controller;
 
-import ru.softwerke.model.Database;
+import ru.softwerke.model.DAO.DeviceDAO;
 import ru.softwerke.model.Device;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.parsers.DateParser;
@@ -22,7 +22,7 @@ public class DeviceController extends InitController{
 
             BigDecimal price = PriceParser.getPrice(localPrice);
 
-            Database.deviceList.add(new Device.Builder()
+            DeviceDAO.getClientsList().add(new Device.Builder()
                     .setManufacturer(manufacturer)
                     .setDeviceModel(deviceModel)
                     .setDeviceType(deviceType)
@@ -43,9 +43,9 @@ public class DeviceController extends InitController{
         }
     }
 
-    public void delete(int id) {
-        Database.deviceList.remove(id);
-        ReadWriter.printLine("Device was deleted");
-        initMenu.showInitMenu();
-    }
+//    public void delete(int id) {
+//        Database.deviceList.remove(id);
+//        ReadWriter.printLine("Device was deleted");
+//        initMenu.showInitMenu();
+//    }
 }
