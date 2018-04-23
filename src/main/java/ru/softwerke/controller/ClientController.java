@@ -1,7 +1,7 @@
 package ru.softwerke.controller;
 
 import ru.softwerke.model.Client;
-import ru.softwerke.model.DAO.ClientDAO;
+import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.parsers.DateParser;
 
@@ -16,14 +16,14 @@ public class ClientController extends InitController {
         try{
         LocalDate birthDate = DateParser.getDate(localDate);
 
-        ClientDAO.getClientsList().add(new Client.Builder()
+        ClientList.getClientsList().add(new Client.Builder()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setBirthDate(birthDate)
                 .setMiddleName(middleName)
                 .build());
         ReadWriter.printLine("Client was created");
-        ClientDAO.showClientsList();
+        ClientList.showClientsList();
         initMenu.showInitMenu();
         } catch (DateTimeParseException e) {
             ReadWriter.printLine("Wrong entry, new client was not created. \n" +
@@ -32,9 +32,34 @@ public class ClientController extends InitController {
         }
     }
 
-//    public void delete(int id) {
-//        Database.clientList.remove(id);
-//        System.out.println("Client was deleted");
-//        initMenu.showInitMenu();
-//    }
+    public void delete(int id) {
+        ClientList.getClientsList().remove(id);
+        ReadWriter.printLine("Client was deleted");
+        initMenu.showInitMenu();
+    }
+
+    public void update(int id, String firstName, String lastName, String middleName, String localDate) {
+        Client client = ClientList.getClientsList().get(id);
+        LocalDate birthDay = DateParser.getDate(localDate);
+
+        if (ClientList.exist(id)) {
+            try {
+                client.setFirstName(firstName);
+                client.setLastName(lastName);
+                client.setMiddleName(middleName);
+                client.setBirthDate(birthDay);
+                ReadWriter.printLine("Client was updated");
+            } catch (DateTimeParseException e) {
+                ReadWriter.printLine("Wrong entry, new client was not created. \n" +
+                        "Please, write the date as 'dd/MM/yyyy'. \n");
+                initMenu.showInitMenu();
+            }
+        }
+        initMenu.showInitMenu();
+    }
+
+    public void showNotSortedClients() {
+        ClientList.showClientsList();
+        initMenu.showInitMenu();
+    }
 }

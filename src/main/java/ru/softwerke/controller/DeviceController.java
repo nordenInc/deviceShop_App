@@ -1,6 +1,6 @@
 package ru.softwerke.controller;
 
-import ru.softwerke.model.DAO.DeviceDAO;
+import ru.softwerke.model.dao.DeviceList;
 import ru.softwerke.model.Device;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.parsers.DateParser;
@@ -22,7 +22,7 @@ public class DeviceController extends InitController{
 
             BigDecimal price = PriceParser.getPrice(localPrice);
 
-            DeviceDAO.getClientsList().add(new Device.Builder()
+            DeviceList.getClientsList().add(new Device.Builder()
                     .setManufacturer(manufacturer)
                     .setDeviceModel(deviceModel)
                     .setDeviceType(deviceType)

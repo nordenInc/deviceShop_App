@@ -1,4 +1,4 @@
-package ru.softwerke.model.DAO;
+package ru.softwerke.model.dao;
 
 import ru.softwerke.model.Device;
 import ru.softwerke.tools.ReadWriter;
@@ -6,7 +6,7 @@ import ru.softwerke.tools.ReadWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceDAO {
+public class DeviceList {
     private static List<Device> deviceList = new ArrayList<>();
 
     public static List<Device> getClientsList() {

@@ -17,7 +17,7 @@ public class InitMenu {
                 "1. Client info \n" +
                 "2. Device info \n" +
                 "3. Sales history \n" +
-                "4. Search");
+                "4. search");
         String operation = ReadWriter.readLine();
         switch (operation) {
             case "1":
@@ -25,11 +25,14 @@ public class InitMenu {
                 break;
             case "2":
                 deviceMenu.showDeviceMenu();
+                break;
             case "3":
                 // Sale history menu
             case "4":
-                // Search menu
+                // search menu
         }
     }
+
+
 
 }

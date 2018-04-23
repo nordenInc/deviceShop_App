@@ -5,7 +5,9 @@ import ru.softwerke.view.DeviceMenu;
 import ru.softwerke.view.InitMenu;
 
 public class InitController {
-    InitMenu initMenu = new InitMenu();
-    ClientMenu clientMenu = new ClientMenu();
-    DeviceMenu deviceMenu = new DeviceMenu();
+    protected InitMenu initMenu = new InitMenu();
+    protected ClientMenu clientMenu = new ClientMenu();
+    protected DeviceMenu deviceMenu = new DeviceMenu();
+
+
 }
