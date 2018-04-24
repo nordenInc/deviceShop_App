@@ -2,16 +2,19 @@ package ru.softwerke.view;
 
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.controller.DeviceController;
+import ru.softwerke.tools.Returner;
 
 
-public class DeviceMenu {
+public class DeviceMenu implements Returner {
 
     public DeviceMenu() {}
 
     public void showDeviceMenu() {
         ReadWriter.printLine("Device menu: \n" +
                 "1. Create new device \n" +
-                "2. Update device ");
+                "2. Update device \n" +
+                "3. Show all devices \n" +
+                "4. Back to main menu");
         String operation = ReadWriter.readLine();
 
         switch (operation) {
@@ -22,10 +25,13 @@ public class DeviceMenu {
                 // update device
             case "3":
                 // show all devices
+            case "4":
+                returnToInitMenu();
+                break;
         }
     }
 
-    public void createDevice() {
+    private void createDevice() {
         ReadWriter.printLine("Enter manufacturer:");
         String manufacturer = ReadWriter.readLine();
         ReadWriter.printLine("Enter device type:");

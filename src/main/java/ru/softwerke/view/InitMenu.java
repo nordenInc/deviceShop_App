@@ -1,15 +1,18 @@
 package ru.softwerke.view;
 
 import ru.softwerke.tools.ReadWriter;
+import ru.softwerke.view.search.SearchMenu;
 
 public class InitMenu {
 
     private ClientMenu clientMenu;
     private DeviceMenu deviceMenu;
+    private SearchMenu searchMenu;
 
     public InitMenu() {
         this.clientMenu = new ClientMenu();
         this.deviceMenu = new DeviceMenu();
+        this.searchMenu = new SearchMenu();
     }
 
     public void showInitMenu() {
@@ -17,7 +20,8 @@ public class InitMenu {
                 "1. Client info \n" +
                 "2. Device info \n" +
                 "3. Sales history \n" +
-                "4. search");
+                "4. Search \n" +
+                "Press 'enter' to exit");
         String operation = ReadWriter.readLine();
         switch (operation) {
             case "1":
@@ -29,10 +33,8 @@ public class InitMenu {
             case "3":
                 // Sale history menu
             case "4":
-                // search menu
+                searchMenu.showSearchMenu();
+                break;
         }
     }
-
-
-
 }

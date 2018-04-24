@@ -2,11 +2,11 @@ package ru.softwerke.view;
 
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.controller.ClientController;
+import ru.softwerke.tools.Returner;
 import ru.softwerke.view.sort.ClientSortMenu;
 
-public class ClientMenu {
+public class ClientMenu implements Returner {
     private ClientSortMenu clientSortMenu;
-    private static ClientController clientController = new ClientController();
 
     public ClientMenu() {
         this.clientSortMenu = new ClientSortMenu();
@@ -18,7 +18,8 @@ public class ClientMenu {
                 "2. Delete client \n" +
                 "3. Update client \n" +
                 "4. Sort clients \n" +
-                "5. Show all clients");
+                "5. Show all clients \n" +
+                "6. Back to main menu");
         String operation = ReadWriter.readLine();
 
         switch (operation) {
@@ -38,11 +39,12 @@ public class ClientMenu {
                 showClients();
                 break;
             case "6":
-                //
+                returnToInitMenu();
+                break;
         }
     }
 
-    public void createClient() {
+    private void createClient() {
         ReadWriter.printLine("Enter name:");
         String firstName = ReadWriter.readLine();
         ReadWriter.printLine("Enter surname:");
@@ -54,13 +56,13 @@ public class ClientMenu {
         new ClientController().create(firstName, lastName, middleName, localDate);
     }
 
-    public void deleteClient() {
+    private void deleteClient() {
         ReadWriter.printLine("Enter client id:");
         int id = Integer.parseInt(ReadWriter.readLine());
         new ClientController().delete(id);
     }
 
-    public void updateClient() {
+    private void updateClient() {
         ReadWriter.printLine("Enter client's id that you want to update:");
         int id = Integer.parseInt(ReadWriter.readLine());
         ReadWriter.printLine("Enter new client's name:");
@@ -74,7 +76,7 @@ public class ClientMenu {
         new ClientController().update(id, firstName, lastName, middleName, localDate);
     }
 
-    public void showClients() {
+    private void showClients() {
         new ClientController().showNotSortedClients();
     }
 

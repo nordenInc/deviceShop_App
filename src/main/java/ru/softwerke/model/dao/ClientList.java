@@ -6,6 +6,7 @@ import ru.softwerke.tools.ReadWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ClientList {
     private static List<Client> clientList = new ArrayList();
@@ -28,5 +29,11 @@ public class ClientList {
                 .size();
         if (value > 0) {return true;}
         else return false;
+    }
+
+    public static Stream<Client> clientStream = clientList.stream();
+
+    public static Stream<Client> getClientStream() {
+        return clientStream;
     }
 }

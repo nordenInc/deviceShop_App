@@ -37,9 +37,9 @@ public class ClientSortController extends InitController {
     }
 
     private void sorter(Comparator<Client> comparator) {
-        TreeSet<Client> clients1 = new TreeSet<>(comparator);
-        ClientList.getClientsList().forEach(s -> clients1.add(s));
-        for (Client client: clients1) {
+        TreeSet<Client> clients = new TreeSet<>(comparator);
+        ClientList.getClientStream().forEach(s -> clients.add(s));
+        for (Client client: clients) {
             ReadWriter.printLine(client);
         }
         initMenu.showInitMenu();
