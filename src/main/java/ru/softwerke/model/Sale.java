@@ -1,24 +1,32 @@
 package ru.softwerke.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Sale {
 
     private static int id = 0;
     private int clientSaleId;
     private Client client;
-    private Device device;
+    private List<Device> deviceList;
     private LocalDate localDate;
 
-    public Sale(Client client, Device device, LocalDate localDate) {
+    public Sale(Client client, List<Device> deviceList, LocalDate localDate) {
         this.clientSaleId = id++;
         this.client = client;
-        this.device = device;
+        this.deviceList = deviceList;
         this.localDate = localDate;
     }
 
     public Sale() {}
 
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Sale.id = id;
+    }
 
     public int getClientSaleId() {
         return clientSaleId;
@@ -36,12 +44,12 @@ public class Sale {
         this.client = client;
     }
 
-    public Device getDevice() {
-        return device;
+    public List<Device> getDeviceList() {
+        return deviceList;
     }
 
-    public void setDevice(Device device) {
-        this.device = device;
+    public void setDeviceList(List<Device> deviceList) {
+        this.deviceList = deviceList;
     }
 
     public LocalDate getLocalDate() {

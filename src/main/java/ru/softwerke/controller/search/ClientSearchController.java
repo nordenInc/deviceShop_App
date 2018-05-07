@@ -1,23 +1,45 @@
 package ru.softwerke.controller.search;
 
+import ru.softwerke.controller.InitController;
 import ru.softwerke.model.Client;
 import ru.softwerke.model.dao.ClientList;
+import ru.softwerke.tools.ReadWriter;
+import ru.softwerke.tools.parsers.DateParser;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class ClientSearchController {
-    private static List<Client> searchedClientsList = new ArrayList<>();
+public class ClientSearchController extends InitController {
 
-//    public List<Client> searchById(String id) {
-//        int searchedId = Integer.parseInt(id);
+//    public void searchById(String id) {
+//        int searchId = Integer.parseInt(id);
 //
-//        searchedClientsList.clear();
-//        for (Client client: ClientList.getClientsList()) {
-//            if (client.getClientId().equals(searchedId)) {
-//                searchedClientsList.add(client);
-//            }
-//        }
-//        return searchedClientsList;
 //    }
+
+    public void searchByName(String firstName) {
+        ClientList.getClientStream()
+                .filter(s -> s.getFirstName().equalsIgnoreCase(firstName))
+                .forEach(c -> ReadWriter.printLine(c));
+        initMenu.showInitMenu();
+    }
+
+    public void searchBySurname(String lastName) {
+        ClientList.getClientStream()
+                .filter(s -> s.getLastName().equalsIgnoreCase(lastName))
+                .forEach(c -> ReadWriter.printLine(c));
+        initMenu.showInitMenu();
+    }
+
+    public void searchByBDay(String bDay) {
+        LocalDate localDate = DateParser.getDate(bDay);
+        ClientList.getClientStream()
+                .filter(s -> s.getBirthDate().equals(localDate))
+                .forEach(c -> ReadWriter.printLine(c));
+        initMenu.showInitMenu();
+    }
 }
+
+
+

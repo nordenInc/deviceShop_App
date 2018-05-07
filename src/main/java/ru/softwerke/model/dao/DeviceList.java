@@ -5,11 +5,13 @@ import ru.softwerke.tools.ReadWriter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DeviceList {
     private static List<Device> deviceList = new ArrayList<>();
 
-    public static List<Device> getClientsList() {
+    public static List<Device> getDeviceList() {
         return deviceList;
     }
 
@@ -18,4 +20,23 @@ public class DeviceList {
             ReadWriter.printLine(device);
         }
     }
+
+    public static Device getDevice(int id) {
+         return deviceList.get(id);
+    }
+
+    public static boolean exist(int id) {
+        int value = deviceList
+                .stream()
+                .filter(s -> s.getDeviceId() == id)
+                .collect(Collectors.toList())
+                .size();
+        if (value > 0) {return true;}
+        else return false;
+    }
+
+    public static Stream<Device> getClientStream() {
+        return deviceList.stream();
+    }
+
 }

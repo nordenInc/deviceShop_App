@@ -8,13 +8,17 @@ import ru.softwerke.tools.comparators.client.ClientBDayComparator;
 import ru.softwerke.tools.comparators.client.ClientNameComparator;
 import ru.softwerke.tools.comparators.client.ClientSurnameComparator;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 public class ClientSortController extends InitController {
+
+
     private static ClientSortController clientSortController = new ClientSortController();
 
-    public ClientSortController() {}
+//    public ClientSortController() {}
 
     public static ClientSortController getClientSortController() {
         return clientSortController;
@@ -24,7 +28,6 @@ public class ClientSortController extends InitController {
         Comparator<Client> comparator1 = new ClientNameComparator();
         clientSortController.sorter(comparator1);
     }
-
 
     public void sortBySurname() {
         Comparator<Client> comparator2 = new ClientSurnameComparator();
@@ -38,7 +41,7 @@ public class ClientSortController extends InitController {
 
     private void sorter(Comparator<Client> comparator) {
         TreeSet<Client> clients = new TreeSet<>(comparator);
-        ClientList.getClientStream().forEach(s -> clients.add(s));
+        ClientList.getClientStream().forEach(clients::add);
         for (Client client: clients) {
             ReadWriter.printLine(client);
         }

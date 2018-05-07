@@ -15,7 +15,7 @@ public class ReadWriter {
     }
 
     public static void printLine(String string) {
-        System.out.println(string);;
+        System.out.println(string);
     }
 
     public static void printLine(Client client) {

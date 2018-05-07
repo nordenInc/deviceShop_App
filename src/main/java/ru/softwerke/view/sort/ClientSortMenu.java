@@ -2,9 +2,10 @@ package ru.softwerke.view.sort;
 
 import ru.softwerke.controller.sort.ClientSortController;
 import ru.softwerke.tools.ReadWriter;
+import ru.softwerke.tools.Returner;
 
-public class ClientSortMenu {
-    private ClientSortController clientSortController = ClientSortController.getClientSortController();
+public class ClientSortMenu implements Returner {
+    private static ClientSortController clientSortController = ClientSortController.getClientSortController();
 
     public void showClientsSortMenu() {
         ReadWriter.printLine("Clients sort menu: \n" +
@@ -25,7 +26,7 @@ public class ClientSortMenu {
                 clientSortController.sortByBDay();
                 break;
             case "4":
-                // go back;
+                returnToInitMenu();
         }
     }
 }

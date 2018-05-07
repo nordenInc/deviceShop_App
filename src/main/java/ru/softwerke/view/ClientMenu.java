@@ -3,13 +3,16 @@ package ru.softwerke.view;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.controller.ClientController;
 import ru.softwerke.tools.Returner;
+import ru.softwerke.view.search.SearchClientMenu;
 import ru.softwerke.view.sort.ClientSortMenu;
 
 public class ClientMenu implements Returner {
     private ClientSortMenu clientSortMenu;
+    private SearchClientMenu searchClientMenu;
 
     public ClientMenu() {
         this.clientSortMenu = new ClientSortMenu();
+        this.searchClientMenu = new SearchClientMenu();
     }
 
     public void showClientsMenu() {
@@ -17,9 +20,10 @@ public class ClientMenu implements Returner {
                 "1. Create new client \n" +
                 "2. Delete client \n" +
                 "3. Update client \n" +
-                "4. Sort clients \n" +
-                "5. Show all clients \n" +
-                "6. Back to main menu");
+                "4. Show all clients \n" +
+                "5. Sort clients \n" +
+                "6. Search in client list \n" +
+                "7. Back to main menu");
         String operation = ReadWriter.readLine();
 
         switch (operation) {
@@ -33,12 +37,15 @@ public class ClientMenu implements Returner {
                 updateClient();
                 break;
             case "4":
-                clientSortMenu.showClientsSortMenu();
-                break;
-            case "5":
                 showClients();
                 break;
+            case "5":
+                clientSortMenu.showClientsSortMenu();
+                break;
             case "6":
+                searchClientMenu.showSearchClientMenu();
+                break;
+            case "7":
                 returnToInitMenu();
                 break;
         }

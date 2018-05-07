@@ -4,12 +4,13 @@ import ru.softwerke.model.Client;
 import ru.softwerke.tools.ReadWriter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ClientList {
-    private static List<Client> clientList = new ArrayList();
+    private static List<Client> clientList = new ArrayList<>();
 
     public static List<Client> getClientsList() {
         return clientList;
@@ -19,6 +20,10 @@ public class ClientList {
         for (Client client: clientList) {
             ReadWriter.printLine(client);
         }
+    }
+
+    public static Client search(int id) {
+        return clientList.get(id);
     }
 
     public static boolean exist(int id) {
@@ -31,9 +36,8 @@ public class ClientList {
         else return false;
     }
 
-    public static Stream<Client> clientStream = clientList.stream();
-
     public static Stream<Client> getClientStream() {
-        return clientStream;
+        return clientList.stream();
     }
+
 }

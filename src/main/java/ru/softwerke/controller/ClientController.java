@@ -1,5 +1,6 @@
 package ru.softwerke.controller;
 
+import com.sun.org.apache.regexp.internal.RE;
 import ru.softwerke.model.Client;
 import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.tools.ReadWriter;
@@ -40,22 +41,25 @@ public class ClientController extends InitController {
 
     public void update(int id, String firstName, String lastName, String middleName, String localDate) {
         Client client = ClientList.getClientsList().get(id);
-        LocalDate birthDay = DateParser.getDate(localDate);
 
         if (ClientList.exist(id)) {
             try {
+                LocalDate birthDay = DateParser.getDate(localDate);
                 client.setFirstName(firstName);
                 client.setLastName(lastName);
                 client.setMiddleName(middleName);
                 client.setBirthDate(birthDay);
                 ReadWriter.printLine("Client was updated");
+                initMenu.showInitMenu();
             } catch (DateTimeParseException e) {
                 ReadWriter.printLine("Wrong entry, new client was not created. \n" +
                         "Please, write the date as 'dd/MM/yyyy'. \n");
                 initMenu.showInitMenu();
             }
+        } else {
+            ReadWriter.printLine("Wrong client id!");
+            initMenu.showInitMenu();
         }
-        initMenu.showInitMenu();
     }
 
     public void showNotSortedClients() {

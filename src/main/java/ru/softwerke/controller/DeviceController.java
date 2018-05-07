@@ -22,7 +22,7 @@ public class DeviceController extends InitController{
 
             BigDecimal price = PriceParser.getPrice(localPrice);
 
-            DeviceList.getClientsList().add(new Device.Builder()
+            DeviceList.getDeviceList().add(new Device.Builder()
                     .setManufacturer(manufacturer)
                     .setDeviceModel(deviceModel)
                     .setDeviceType(deviceType)
@@ -43,9 +43,45 @@ public class DeviceController extends InitController{
         }
     }
 
-//    public void delete(int id) {
-//        Database.deviceList.remove(id);
-//        ReadWriter.printLine("Device was deleted");
-//        initMenu.showInitMenu();
-//    }
+    public void delete(int id) {
+        DeviceList.getDeviceList().remove(id);
+        ReadWriter.printLine("Device was deleted");
+        initMenu.showInitMenu();
+    }
+
+    public void update(int id, String manufacturer, String deviceType, String deviceModel, String deviceColor,
+                       String localDate, String localPrice) {
+        Device device = DeviceList.getDeviceList().get(id);
+
+        if (DeviceList.exist(id)) {
+            try {
+                LocalDate releaseDate = DateParser.getDate(localDate);
+                BigDecimal price = PriceParser.getPrice(localPrice);
+                device.setManufacturer(manufacturer);
+                device.setDeviceType(deviceType);
+                device.setDeviceModel(deviceModel);
+                device.setDeviceColor(deviceColor);
+                device.setReleaseDate(releaseDate);
+                device.setPrice(price);
+                ReadWriter.printLine("Device was updated");
+                initMenu.showInitMenu();
+            } catch (DateTimeParseException e) {
+                ReadWriter.printLine("Wrong entry, new device was not created. \n" +
+                        "Please, write the date as 'dd/MM/yyyy'. \n");
+                initMenu.showInitMenu();
+            } catch (ParseException e) {
+                ReadWriter.printLine("Wrong entry, new client was not created. \n" +
+                        "Please, write the price as '#,##0.0#'. \n");
+                initMenu.showInitMenu();
+            }
+        } else {
+            ReadWriter.printLine("Wrong device id!");
+            initMenu.showInitMenu();
+        }
+    }
+
+    public void showNotSortedDevices() {
+        DeviceList.showDeviceList();
+        initMenu.showInitMenu();
+    }
 }

@@ -15,16 +15,6 @@ public class Client {
     private String middleName;
     private LocalDate birthDate;
 
-//    public Client(String firstName, String lastName, String middleName, LocalDate birthDate) {
-//        this.clientId = id++;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.middleName = middleName;
-//        this.birthDate = birthDate;
-//    }
-
-    public Client() {}
-
     private Client(Builder builder) {
         this.clientId = id++;
         this.firstName = builder.firstName;
