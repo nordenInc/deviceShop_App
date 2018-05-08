@@ -1,11 +1,16 @@
 package ru.softwerke.view.sort;
 
 import ru.softwerke.controller.sort.ClientSortController;
+import ru.softwerke.model.Client;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.Returner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClientSortMenu implements Returner {
     private static ClientSortController clientSortController = ClientSortController.getClientSortController();
+    private List<Client> clients = new ArrayList<>();
 
     public void showClientsSortMenu() {
         ReadWriter.printLine("Clients sort menu: \n" +
@@ -17,13 +22,13 @@ public class ClientSortMenu implements Returner {
 
         switch (operation) {
             case "1":
-                clientSortController.sortByName();
+                sortByFirstName();
                 break;
             case "2":
-                clientSortController.sortBySurname();
+                sortByLastName();
                 break;
             case "3":
-                clientSortController.sortByBDay();
+                sortByBirthDate();
                 break;
             case "4":
                 returnToInitMenu();
@@ -31,5 +36,30 @@ public class ClientSortMenu implements Returner {
                     wrongEntry();
                     break;
         }
+    }
+
+    private void sortByFirstName() {
+        clients.clear();
+        ClientSortController.sortByName().forEach(clients::add);
+        print();
+    }
+
+    private void sortByLastName() {
+        clients.clear();
+        ClientSortController.sortBySurname().forEach(clients::add);
+        print();
+    }
+
+    private void sortByBirthDate() {
+        clients.clear();
+        ClientSortController.sortByBDay().forEach(clients::add);
+        print();
+    }
+
+    private void print() {
+        for (Client client: clients) {
+            ReadWriter.printLine(client);
+        }
+        returnToInitMenu();
     }
 }

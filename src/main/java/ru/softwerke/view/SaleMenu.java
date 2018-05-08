@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class SaleMenu implements Returner {
 
-    public void saleMenu() {
+    public void showSaleMenu() {
         ReadWriter.printLine("Sales menu: \n" +
             "1. Make a purchase \n" +
             "2. Show sales history \n" +

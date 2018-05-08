@@ -8,10 +8,12 @@ public class InitMenu implements Returner {
 
     private ClientMenu clientMenu;
     private DeviceMenu deviceMenu;
+    private SaleMenu saleMenu;
 
     public InitMenu() {
         this.clientMenu = new ClientMenu();
         this.deviceMenu = new DeviceMenu();
+        this.saleMenu = new SaleMenu();
     }
 
     public void showInitMenu() {
@@ -29,10 +31,10 @@ public class InitMenu implements Returner {
                 deviceMenu.showDeviceMenu();
                 break;
             case "3":
-                // Sale  menu
+                saleMenu.showSaleMenu();
                 break;
                 default:
-                    wrongEntry();
+                    wrongEntryInit();
                     break;
         }
     }

@@ -14,4 +14,8 @@ public interface Returner {
         InitMenu initMenu = new InitMenu();
         initMenu.showInitMenu();
     }
+
+    default void wrongEntryInit() {
+        ReadWriter.printLine("Shutting down)");
+    }
 }
