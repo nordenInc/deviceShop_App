@@ -8,4 +8,10 @@ public interface Returner {
         InitMenu initMenu = new InitMenu();
         initMenu.showInitMenu();
     }
+
+    default void wrongEntry() {
+        ReadWriter.printLine("Wrong entry! Please, try again.");
+        InitMenu initMenu = new InitMenu();
+        initMenu.showInitMenu();
+    }
 }

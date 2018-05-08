@@ -42,6 +42,9 @@ public class DeviceMenu implements Returner {
             case "7":
                 returnToInitMenu();
                 break;
+                default:
+                    wrongEntry();
+                    break;
         }
     }
 

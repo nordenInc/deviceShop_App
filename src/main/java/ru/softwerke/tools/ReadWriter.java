@@ -14,7 +14,7 @@ public class ReadWriter {
         return scanner.nextLine();
     }
 
-    public static void print(String sout) {
+    private static void print(String sout) {
         System.out.println(sout);
     }
 

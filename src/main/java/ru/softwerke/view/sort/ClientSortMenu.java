@@ -27,6 +27,9 @@ public class ClientSortMenu implements Returner {
                 break;
             case "4":
                 returnToInitMenu();
+                default:
+                    wrongEntry();
+                    break;
         }
     }
 }

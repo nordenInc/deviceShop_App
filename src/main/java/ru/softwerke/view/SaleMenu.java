@@ -21,14 +21,22 @@ public class SaleMenu implements Returner {
         switch (operation) {
             case "1":
                 // make a purchase
+                break;
             case "2":
                 // show sales history
+                break;
             case "3":
                 // sort sales history
+                break;
             case "4":
                 // search in sales history
+                break;
             case "5":
                 returnToInitMenu();
+                break;
+                default:
+                    wrongEntry();
+                    break;
         }
     }
 

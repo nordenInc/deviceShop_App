@@ -2,15 +2,17 @@ package ru.softwerke.view.search;
 
 import ru.softwerke.controller.search.ClientSearchController;
 import ru.softwerke.tools.ReadWriter;
+import ru.softwerke.tools.Returner;
 
-public class SearchClientMenu {
+public class SearchClientMenu implements Returner {
 
     public void showSearchClientMenu() {
         ReadWriter.printLine("Client search menu: \n" +
             "1. Search by id \n" +
             "2. Search by name \n" +
             "3. Search by surname \n" +
-            "4. Search by birthday");
+            "4. Search by birthday \n" +
+            "5. Go back");
 
         String operation = ReadWriter.readLine();
 
@@ -27,6 +29,12 @@ public class SearchClientMenu {
             case "4":
                 searchBirthDay();
                 break;
+            case "5":
+                returnToInitMenu();
+                break;
+                default:
+                    wrongEntry();
+                    break;
         }
     }
 

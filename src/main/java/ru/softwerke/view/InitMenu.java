@@ -1,9 +1,10 @@
 package ru.softwerke.view;
 
 import ru.softwerke.tools.ReadWriter;
+import ru.softwerke.tools.Returner;
 
 
-public class InitMenu {
+public class InitMenu implements Returner {
 
     private ClientMenu clientMenu;
     private DeviceMenu deviceMenu;
@@ -30,6 +31,9 @@ public class InitMenu {
             case "3":
                 // Sale  menu
                 break;
+                default:
+                    wrongEntry();
+                    break;
         }
     }
 }
