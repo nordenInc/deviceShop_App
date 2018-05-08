@@ -13,10 +13,13 @@ import java.util.stream.Stream;
 
 public class ClientSearchController extends InitController {
 
-//    public void searchById(String id) {
-//        int searchId = Integer.parseInt(id);
-//
-//    }
+    public void searchById(String id) {
+        int searchId = Integer.parseInt(id);
+        ClientList.getClientStream()
+                .filter(s -> (s.getClientId() == searchId))
+                .forEach(c -> ReadWriter.printLine(c));
+        initMenu.showInitMenu();
+    }
 
     public void searchByName(String firstName) {
         ClientList.getClientStream()

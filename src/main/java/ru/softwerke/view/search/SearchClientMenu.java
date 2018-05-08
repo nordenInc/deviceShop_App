@@ -18,7 +18,7 @@ public class SearchClientMenu implements Returner {
 
         switch (operation) {
             case "1":
-//                searchId();
+                searchId();
                 break;
             case "2":
                 searchName();
@@ -38,11 +38,11 @@ public class SearchClientMenu implements Returner {
         }
     }
 
-//    private void searchId() {
-//        ReadWriter.printLine("Enter clients id you want to find:");
-//        String id = ReadWriter.readLine();
-//        new ClientSearchController().searchById(id);
-//    }
+    private void searchId() {
+        ReadWriter.printLine("Enter clients id you want to find:");
+        String id = ReadWriter.readLine();
+        new ClientSearchController().searchById(id);
+    }
 
     private void searchName() {
         ReadWriter.printLine("Enter clients name you want to find:");
