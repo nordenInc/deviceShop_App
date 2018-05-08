@@ -14,20 +14,24 @@ public class ReadWriter {
         return scanner.nextLine();
     }
 
+    public static void print(String sout) {
+        System.out.println(sout);
+    }
+
     public static void printLine(String string) {
-        System.out.println(string);
+        print(string);
     }
 
     public static void printLine(Client client) {
-        System.out.println(client);
+        print(client.toString());
     }
 
     public static void printLine(Device device) {
-        System.out.println(device);
+        print(device.toString());
     }
 
     public static void printLine(Sale sale) {
-        System.out.println(sale);
+        print(sale.toString());
     }
 
 }
