@@ -10,11 +10,6 @@ import java.util.stream.Collectors;
 
 
 public class ClientSortController extends InitController {
-    private static ClientSortController clientSortController = new ClientSortController();
-
-    public static ClientSortController getClientSortController() {
-        return clientSortController;
-    }
 
     public static List<Client> sortByName() {
          return ClientList.getClientStream().sorted(Comparator.comparing(Client::getFirstName))

@@ -3,16 +3,16 @@ package ru.softwerke.view;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.controller.ClientController;
 import ru.softwerke.tools.Returner;
-import ru.softwerke.view.search.SearchClientMenu;
+import ru.softwerke.view.search.ClientSearchMenu;
 import ru.softwerke.view.sort.ClientSortMenu;
 
 public class ClientMenu implements Returner {
     private ClientSortMenu clientSortMenu;
-    private SearchClientMenu searchClientMenu;
+    private ClientSearchMenu clientSearchMenu;
 
     public ClientMenu() {
         this.clientSortMenu = new ClientSortMenu();
-        this.searchClientMenu = new SearchClientMenu();
+        this.clientSearchMenu = new ClientSearchMenu();
     }
 
     public void showClientsMenu() {
@@ -43,7 +43,7 @@ public class ClientMenu implements Returner {
                 clientSortMenu.showClientsSortMenu();
                 break;
             case "6":
-                searchClientMenu.showSearchClientMenu();
+                clientSearchMenu.showClientSearchMenu();
                 break;
             case "7":
                 returnToInitMenu();

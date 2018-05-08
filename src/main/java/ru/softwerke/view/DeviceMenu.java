@@ -3,11 +3,18 @@ package ru.softwerke.view;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.controller.DeviceController;
 import ru.softwerke.tools.Returner;
+import ru.softwerke.view.search.DeviceSearchMenu;
+import ru.softwerke.view.sort.DeviceSortMenu;
 
 
 public class DeviceMenu implements Returner {
+    private DeviceSortMenu deviceSortMenu;
+    private DeviceSearchMenu deviceSearchMenu;
 
-    public DeviceMenu() {}
+    public DeviceMenu() {
+        this.deviceSortMenu = new DeviceSortMenu();
+        this.deviceSearchMenu = new DeviceSearchMenu();
+    }
 
     public void showDeviceMenu() {
         ReadWriter.printLine("Device menu: \n" +
@@ -34,10 +41,10 @@ public class DeviceMenu implements Returner {
                 showDevices();
                 break;
             case "5":
-                // sort devices
+                deviceSortMenu.showDeviceSortMenu();
                 break;
             case "6":
-                //
+                deviceSearchMenu.showDeviceSearchMenu();
                 break;
             case "7":
                 returnToInitMenu();

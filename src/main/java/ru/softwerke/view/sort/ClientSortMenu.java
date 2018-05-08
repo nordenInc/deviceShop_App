@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientSortMenu implements Returner {
-    private static ClientSortController clientSortController = ClientSortController.getClientSortController();
     private List<Client> clients = new ArrayList<>();
 
     public void showClientsSortMenu() {

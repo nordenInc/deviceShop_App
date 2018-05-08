@@ -4,9 +4,9 @@ import ru.softwerke.controller.search.ClientSearchController;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.Returner;
 
-public class SearchClientMenu implements Returner {
+public class ClientSearchMenu implements Returner {
 
-    public void showSearchClientMenu() {
+    public void showClientSearchMenu() {
         ReadWriter.printLine("Client search menu: \n" +
             "1. Search by id \n" +
             "2. Search by name \n" +

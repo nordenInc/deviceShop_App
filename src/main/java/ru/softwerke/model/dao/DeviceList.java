@@ -35,7 +35,7 @@ public class DeviceList {
         else return false;
     }
 
-    public static Stream<Device> getClientStream() {
+    public static Stream<Device> getDeviceStream() {
         return deviceList.stream();
     }
 

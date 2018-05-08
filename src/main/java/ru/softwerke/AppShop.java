@@ -55,7 +55,7 @@ public class AppShop {
         deviceList.add(new Device.Builder().setManufacturer("Xiaomi").setDeviceType("Phone").setDeviceModel("Mi A1")
                 .setDeviceColor("White").setReleaseDate(localDate5).setPrice(bigDecimalPrice2).build());
 
-        ReadWriter.printLine("Welcome to shop interface!");
+        ReadWriter.printLine("Welcome to our device shop!");
         InitMenu initMenu = new InitMenu();
         initMenu.showInitMenu();
     }
