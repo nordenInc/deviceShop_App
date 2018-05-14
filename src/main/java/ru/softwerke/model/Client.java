@@ -8,15 +8,15 @@ import java.util.concurrent.locks.LockSupport;
 import static sun.net.InetAddressCachePolicy.get;
 
 public class Client {
-    private static int id = 0;
-    private int clientId;
+    private static AtomicLong atomicLong = new AtomicLong(0);
+    private long clientId;
     private String firstName;
     private String lastName;
     private String middleName;
     private LocalDate birthDate;
 
     private Client(Builder builder) {
-        this.clientId = id++;
+        this.clientId = atomicLong.incrementAndGet();
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.middleName = builder.middleName;
@@ -24,7 +24,7 @@ public class Client {
     }
 
     public static class Builder {
-        private int clientId;
+        private AtomicLong clientId;
         private String firstName;
         private String lastName;
         private String middleName;
@@ -58,7 +58,7 @@ public class Client {
     }
 
 
-    public int getClientId() {
+    public long getClientId() {
         return clientId;
     }
 

@@ -2,10 +2,11 @@ package ru.softwerke.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Device {
-    private static int id = 0;
-    private int deviceId;
+    private static AtomicLong atomicLong = new AtomicLong(0);
+    private long deviceId;
     private String manufacturer;
     private String deviceType;
     private String deviceModel;
@@ -14,7 +15,7 @@ public class Device {
     private BigDecimal price;
 
     private Device(Builder builder) {
-        this.deviceId = id++;
+        this.deviceId = atomicLong.incrementAndGet();
         this.manufacturer = builder.manufacturer;
         this.deviceType = builder.deviceType;
         this.deviceModel = builder.deviceModel;
@@ -69,7 +70,7 @@ public class Device {
         }
     }
 
-    public int getDeviceId() {
+    public long getDeviceId() {
         return deviceId;
     }
 
