@@ -13,10 +13,14 @@ public class SaleList {
         return salesList;
     }
 
-    public static void showDeviceList() {
+    public static void showSaleList() {
         for (Sale sale: salesList) {
             ReadWriter.printLine(sale);
         }
+    }
+
+    public void addSale(Sale sale) {
+        salesList.add(sale);
     }
 
 }

@@ -34,4 +34,16 @@ public class ReadWriter {
         print(sale.toString());
     }
 
+    public static boolean fork() {
+        while (true) {
+            print("Enter yes or no to continue or exit");
+            String fork = readLine();
+            if ("yes".equalsIgnoreCase(fork)) {
+                return true;
+            } else if ("no".equalsIgnoreCase(fork)) {
+                return false;
+            } else {print("Wrong entry");}
+        }
+    }
+
 }

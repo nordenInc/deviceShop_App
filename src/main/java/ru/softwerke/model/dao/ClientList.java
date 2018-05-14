@@ -21,7 +21,7 @@ public class ClientList {
         }
     }
 
-    public static Client search(int id) {
+    public Client search(int id) {
         return clientList.get(id);
     }
 

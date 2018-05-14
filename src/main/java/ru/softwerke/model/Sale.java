@@ -59,4 +59,12 @@ public class Sale {
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
     }
+
+    @Override
+    public String toString() {
+        return  "Sale Id: " + clientSaleId + "\n" +
+                "Client: " + client + "\n" +
+                "Bought devices: " + deviceList + "\n" +
+                "Purchase time: " + localDate + "\n" + "\n";
+    }
 }

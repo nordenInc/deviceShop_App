@@ -1,6 +1,7 @@
 package ru.softwerke.view;
 
 import ru.softwerke.controller.SaleController;
+import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.Returner;
 
@@ -9,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SaleMenu implements Returner {
+    private ClientList clientList = new ClientList();
 
     public void showSaleMenu() {
         ReadWriter.printLine("Sales menu: \n" +
@@ -20,10 +22,10 @@ public class SaleMenu implements Returner {
         String operation = ReadWriter.readLine();
         switch (operation) {
             case "1":
-                // make a purchase
+                createSale();
                 break;
             case "2":
-                // show sales history
+                showSalesHistory();
                 break;
             case "3":
                 // sort sales history
@@ -40,13 +42,14 @@ public class SaleMenu implements Returner {
         }
     }
 
-    public void createSale(boolean exist) {
+    private void createSale() {
         boolean add = true;
-        Map<Integer, Integer> devicePool = new HashMap<>();
-        LocalDate localDate = LocalDate.now();
 
-        ReadWriter.printLine("Enter client id who makes purchase:");
+        Map<Integer, Integer> devicePool = new HashMap<>();
+
+        ReadWriter.printLine("Enter client id who want to make purchase:");
         int clientId = Integer.parseInt(ReadWriter.readLine());
+        boolean exist = clientList.exist(clientId);
 
         if (exist) {
             while (add) {
@@ -54,20 +57,15 @@ public class SaleMenu implements Returner {
                 int deviceId = Integer.parseInt(ReadWriter.readLine());
                 ReadWriter.printLine("Enter number of device you want to buy:");
                 int numberOfDevice = Integer.parseInt(ReadWriter.readLine());
-                ReadWriter.printLine("Do you want to add more items? \n" +
-                        "If yes print '1' if not press 'enter':");
-                int answer = Integer.parseInt(ReadWriter.readLine());
-                if (answer != 1) {
-                    add = false;
-                }
+                devicePool.put(deviceId, numberOfDevice);
+                add = ReadWriter.fork();
             }
         }
+        LocalDate purchaseDate = LocalDate.now();
+        new SaleController().create(clientId, devicePool, purchaseDate);
+    }
 
-        if (exist) {
-//            new SaleController().create();
-        }
-
-
-
+    private void showSalesHistory() {
+        new SaleController().showNotSortedSales();
     }
 }
