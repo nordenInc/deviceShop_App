@@ -44,7 +44,6 @@ public class SaleMenu implements Returner {
 
     private void createSale() {
         boolean add = true;
-
         Map<Integer, Integer> devicePool = new HashMap<>();
 
         ReadWriter.printLine("Enter client id who want to make purchase:");

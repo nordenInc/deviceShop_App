@@ -5,11 +5,12 @@ import ru.softwerke.tools.ReadWriter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SaleList {
     private static List<Sale> salesList = new ArrayList<>();
 
-    public static List<Sale> getClientsList() {
+    public static List<Sale> getSalesList() {
         return salesList;
     }
 
@@ -17,6 +18,10 @@ public class SaleList {
         for (Sale sale: salesList) {
             ReadWriter.printLine(sale);
         }
+    }
+
+    public static Stream<Sale> getSalesStream() {
+        return salesList.stream();
     }
 
     public void addSale(Sale sale) {

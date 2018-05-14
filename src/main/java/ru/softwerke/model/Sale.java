@@ -2,18 +2,18 @@ package ru.softwerke.model;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Sale {
 
-    private static AtomicLong atomicLong = new AtomicLong(0);;
-    private long clientSaleId;
+    private static AtomicInteger atomicInteger = new AtomicInteger(0);
+    private int clientSaleId;
     private Client client;
     private List<Device> deviceList;
     private LocalDate localDate;
 
     public Sale(Client client, List<Device> deviceList, LocalDate localDate) {
-        this.clientSaleId = atomicLong.incrementAndGet();
+        this.clientSaleId = atomicInteger.incrementAndGet();
         this.client = client;
         this.deviceList = deviceList;
         this.localDate = localDate;
@@ -21,12 +21,8 @@ public class Sale {
 
     public Sale() {}
 
-    public long getClientSaleId() {
+    public int getClientSaleId() {
         return clientSaleId;
-    }
-
-    public void setClientSaleId(int clientSaleId) {
-        this.clientSaleId = clientSaleId;
     }
 
     public Client getClient() {

@@ -1,22 +1,18 @@
 package ru.softwerke.model;
 
 import java.time.LocalDate;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.locks.LockSupport;
-
-
-import static sun.net.InetAddressCachePolicy.get;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Client {
-    private static AtomicLong atomicLong = new AtomicLong(0);
-    private long clientId;
+    private static AtomicInteger atomicInteger = new AtomicInteger(0);
+    private int clientId;
     private String firstName;
     private String lastName;
     private String middleName;
     private LocalDate birthDate;
 
     private Client(Builder builder) {
-        this.clientId = atomicLong.incrementAndGet();
+        this.clientId = atomicInteger.incrementAndGet();
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.middleName = builder.middleName;
@@ -24,7 +20,6 @@ public class Client {
     }
 
     public static class Builder {
-        private AtomicLong clientId;
         private String firstName;
         private String lastName;
         private String middleName;
@@ -58,12 +53,8 @@ public class Client {
     }
 
 
-    public long getClientId() {
+    public int getClientId() {
         return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
     }
 
     public String getFirstName() {
@@ -103,26 +94,4 @@ public class Client {
                 ", Middle name = '" + middleName + '\'' +
                 ", Date of birth - '" + birthDate +"'";
     }
-
-    //    private final AtomicLong value = new AtomicLong(0L);
-//    public long get() {
-//        return value.get();
-//    }
-//    public long incrementAndGet() {
-//        for (;;) {
-//            long current = get();
-//            long next = current + 1;
-//            if (compareAndSet(current, next))
-//                return next;
-//        }
-//    }
-//    public boolean compareAndSet(final long current, final long next) {
-//        if (value.compareAndSet(current, next)) {
-//            return true;
-//        } else {
-//            LockSupport.parkNanos(1);
-//            return false;
-//        }
-//    }
-
 }

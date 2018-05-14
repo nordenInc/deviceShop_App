@@ -2,8 +2,10 @@ package ru.softwerke;
 
 import ru.softwerke.model.Client;
 import ru.softwerke.model.Device;
+import ru.softwerke.model.Sale;
 import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.model.dao.DeviceList;
+import ru.softwerke.model.dao.SaleList;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.view.InitMenu;
 
@@ -18,6 +20,7 @@ import java.util.List;
 public class AppShop {
     private static List<Client> clientList = ClientList.getClientsList();
     private static List<Device> deviceList = DeviceList.getDeviceList();
+    private static List<Sale> sales = SaleList.getSalesList();
 
     public static void main(String[] args) throws ParseException {
 

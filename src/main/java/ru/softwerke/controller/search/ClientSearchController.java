@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public class ClientSearchController extends InitController {
 
     public void searchById(String id) {
-        int searchId = Integer.parseInt(id);
+        long searchId = Long.parseLong(id);
         ClientList.getClientStream()
                 .filter(s -> (s.getClientId() == searchId))
                 .forEach(c -> ReadWriter.printLine(c));
