@@ -1,10 +1,12 @@
 package ru.softwerke.view;
 
 import ru.softwerke.controller.SaleController;
+import ru.softwerke.controller.search.SaleSearchController;
 import ru.softwerke.model.Sale;
 import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.Returner;
+import ru.softwerke.view.search.SaleSearchMenu;
 import ru.softwerke.view.sort.SaleSortMenu;
 
 import java.time.LocalDate;
@@ -13,10 +15,12 @@ import java.util.Map;
 
 public class SaleMenu implements Returner {
     private SaleSortMenu saleSortMenu;
+    private SaleSearchMenu saleSearchMenu;
     private ClientList clientList = new ClientList();
 
     public SaleMenu() {
         this.saleSortMenu = new SaleSortMenu();
+        this.saleSearchMenu = new SaleSearchMenu();
     }
 
     public void showSaleMenu() {
@@ -38,7 +42,7 @@ public class SaleMenu implements Returner {
                 saleSortMenu.showSalesSortMenu();
                 break;
             case "4":
-                // search in sales history
+                saleSearchMenu.showSalesSearchMenu();
                 break;
             case "5":
                 returnToInitMenu();

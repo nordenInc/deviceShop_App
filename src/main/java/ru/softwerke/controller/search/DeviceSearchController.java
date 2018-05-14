@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class DeviceSearchController extends InitController {
 
     public void searchById(String id) {
-        long searchId = Long.parseLong(id);
+        int searchId = Integer.parseInt(id);
         DeviceList.getDeviceStream()
                 .filter(s -> (s.getDeviceId() == searchId))
                 .forEach(c -> ReadWriter.printLine(c));
