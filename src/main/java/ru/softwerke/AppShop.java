@@ -15,6 +15,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppShop {
@@ -57,6 +58,20 @@ public class AppShop {
                 .setDeviceColor("Silver").setReleaseDate(localDate4).setPrice(bigDecimalPrice1).build());
         deviceList.add(new Device.Builder().setManufacturer("Xiaomi").setDeviceType("Phone").setDeviceModel("Mi A1")
                 .setDeviceColor("White").setReleaseDate(localDate5).setPrice(bigDecimalPrice2).build());
+
+        List<Device> device = new ArrayList<>();
+        List<Device> device1 = new ArrayList<>();
+        List<Device> device2 = new ArrayList<>();
+
+        device.add(deviceList.get(0));
+        device.add(deviceList.get(1));
+        device1.add(deviceList.get(1));
+        device2.add(deviceList.get(2));
+
+        sales.add(new Sale(clientList.get(0), device, LocalDate.now()));
+        sales.add(new Sale(clientList.get(1), device1, LocalDate.now()));
+        sales.add(new Sale(clientList.get(2), device2, LocalDate.now()));
+
 
         ReadWriter.printLine("Welcome to our device shop!");
         InitMenu initMenu = new InitMenu();
