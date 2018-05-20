@@ -10,6 +10,11 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.time.LocalDate;
 
+/**
+ * Controller for device search with different params:
+ * (id, manufacturer, device type, model, color, release date, price)
+ */
+
 public class DeviceSearchController extends InitController {
 
     public void searchById(String id) {
@@ -48,8 +53,8 @@ public class DeviceSearchController extends InitController {
         initMenu.showInitMenu();
     }
 
-    public void searchByReleaseDate(String bDay) {
-        LocalDate localDate = DateParser.getDate(bDay);
+    public void searchByReleaseDate(String RDay) {
+        LocalDate localDate = DateParser.getDate(RDay);
         DeviceList.getDeviceStream()
                 .filter(s -> s.getReleaseDate().equals(localDate))
                 .forEach(c -> ReadWriter.printLine(c));

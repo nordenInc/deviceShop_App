@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Sale data storage
+ */
+
 public class SaleList {
     private static List<Sale> salesList = new ArrayList<>();
 
@@ -19,13 +23,17 @@ public class SaleList {
             ReadWriter.printLine(sale);
         }
     }
-
-    public static Stream<Sale> getSalesStream() {
-        return salesList.stream();
-    }
-
     public void addSale(Sale sale) {
         salesList.add(sale);
     }
 
+    /**
+     * Use for sort and search, in purpose not to change original sale list
+     *
+     * @return sale stream
+     */
+
+    public static Stream<Sale> getSalesStream() {
+        return salesList.stream();
+    }
 }

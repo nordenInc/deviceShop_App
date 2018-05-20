@@ -8,6 +8,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Controller for sale sort with params:
+ * (id, purchase date)
+ */
+
 public class SaleSortController extends InitController {
     public static List<Sale> sortById() {
         return SaleList.getSalesStream().sorted(Comparator.comparing(Sale::getClientSaleId))

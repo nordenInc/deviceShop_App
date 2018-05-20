@@ -5,7 +5,18 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 
+/**
+ * Custom price parser
+ */
+
 public class PriceParser {
+
+    /**
+     *
+     * @param localPrice - user input string
+     * @return bigDecimalPrice - parsed to value according to format "#,##0.0#"
+     * @throws ParseException
+     */
 
     public static BigDecimal getPrice(String localPrice) throws ParseException {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();

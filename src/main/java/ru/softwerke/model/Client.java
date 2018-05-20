@@ -3,6 +3,10 @@ package ru.softwerke.model;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Client entity
+ */
+
 public class Client {
     private static AtomicInteger atomicInteger = new AtomicInteger(0);
     private int clientId;
@@ -10,48 +14,6 @@ public class Client {
     private String lastName;
     private String middleName;
     private LocalDate birthDate;
-
-    private Client(Builder builder) {
-        this.clientId = atomicInteger.incrementAndGet();
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
-        this.middleName = builder.middleName;
-        this.birthDate = builder.birthDate;
-    }
-
-    public static class Builder {
-        private String firstName;
-        private String lastName;
-        private String middleName;
-        private LocalDate birthDate;
-
-        public Builder() {}
-
-        public Builder setFirstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public Builder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public Builder setBirthDate(LocalDate birthDate) {
-            this.birthDate = birthDate;
-            return this;
-        }
-
-        public Builder setMiddleName(String middleName) {
-            this.middleName = middleName;
-            return this;
-        }
-
-        public Client build() {
-            return new Client(this);
-        }
-    }
-
 
     public int getClientId() {
         return clientId;
@@ -93,5 +55,52 @@ public class Client {
                 ", Surname= '" + lastName + '\'' +
                 ", Middle name = '" + middleName + '\'' +
                 ", Date of birth - '" + birthDate +"'";
+    }
+
+    /**
+     * Use of pattern builder to reduce string length and to be confident in order of client create
+     *
+     * @param builder
+     */
+
+    private Client(Builder builder) {
+        this.clientId = atomicInteger.incrementAndGet();
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.middleName = builder.middleName;
+        this.birthDate = builder.birthDate;
+    }
+
+    public static class Builder {
+        private String firstName;
+        private String lastName;
+        private String middleName;
+        private LocalDate birthDate;
+
+        public Builder() {}
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setBirthDate(LocalDate birthDate) {
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public Builder setMiddleName(String middleName) {
+            this.middleName = middleName;
+            return this;
+        }
+
+        public Client build() {
+            return new Client(this);
+        }
     }
 }

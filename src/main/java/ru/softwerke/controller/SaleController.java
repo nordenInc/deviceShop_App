@@ -13,9 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Controller for create and show sales
+ */
+
 public class SaleController extends InitController {
     private SaleList saleList = new SaleList();
     private ClientList clientList = new ClientList();
+
+    /**
+     * Add new purchase to list
+     *
+     * @param clientId
+     * @param devicePool
+     * @param purchaseDate
+     */
 
     public void create(int clientId, Map<Integer, Integer> devicePool, LocalDate purchaseDate) {
         List<Device> deviceList = new ArrayList<>();
@@ -43,6 +55,10 @@ public class SaleController extends InitController {
             initMenu.showInitMenu();
         }
     }
+
+    /**
+     * Show original sales list
+     */
 
     public void showNotSortedSales() {
         SaleList.showSaleList();

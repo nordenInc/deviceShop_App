@@ -11,9 +11,24 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Controller for create, delete, update and show devices
+ */
+
 public class DeviceController extends InitController{
 
     public DeviceController() {}
+
+    /**
+     * Add new device to list
+     *
+     * @param manufacturer
+     * @param deviceType
+     * @param deviceModel
+     * @param deviceColor
+     * @param localDate
+     * @param localPrice
+     */
 
     public void create(String manufacturer, String deviceType, String deviceModel,
                        String deviceColor, String localDate, String localPrice) {
@@ -43,11 +58,29 @@ public class DeviceController extends InitController{
         }
     }
 
+    /**
+     * Delete device from list
+     *
+     * @param id
+     */
+
     public void delete(int id) {
         DeviceList.getDeviceList().remove(id);
         ReadWriter.printLine("Device was deleted");
         initMenu.showInitMenu();
     }
+
+    /**
+     * Update exist device
+     *
+     * @param id
+     * @param manufacturer
+     * @param deviceType
+     * @param deviceModel
+     * @param deviceColor
+     * @param localDate
+     * @param localPrice
+     */
 
     public void update(int id, String manufacturer, String deviceType, String deviceModel, String deviceColor,
                        String localDate, String localPrice) {
@@ -79,6 +112,10 @@ public class DeviceController extends InitController{
             initMenu.showInitMenu();
         }
     }
+
+    /**
+     * Show original device list
+     */
 
     public void showNotSortedDevices() {
         DeviceList.showDeviceList();

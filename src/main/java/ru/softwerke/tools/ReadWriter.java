@@ -6,6 +6,10 @@ import ru.softwerke.model.Sale;
 
 import java.util.Scanner;
 
+/**
+ * Tool for getting info from user and giving processed data
+ */
+
 public class ReadWriter {
 
     private static Scanner scanner = new Scanner(System.in);
@@ -33,6 +37,11 @@ public class ReadWriter {
     public static void printLine(Sale sale) {
         print(sale.toString());
     }
+
+    /**
+     * To get 'yes' or 'no' answer from user
+     * @return statement
+     */
 
     public static boolean fork() {
         while (true) {

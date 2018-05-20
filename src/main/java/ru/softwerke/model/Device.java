@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Device entity
+ */
+
 public class Device {
     private static AtomicInteger atomicInteger = new AtomicInteger(0);
     private int deviceId;
@@ -13,61 +17,6 @@ public class Device {
     private String deviceColor;
     private LocalDate releaseDate;
     private BigDecimal price;
-
-    private Device(Builder builder) {
-        this.deviceId = atomicInteger.incrementAndGet();
-        this.manufacturer = builder.manufacturer;
-        this.deviceType = builder.deviceType;
-        this.deviceModel = builder.deviceModel;
-        this.deviceColor = builder.deviceColor;
-        this.releaseDate = builder.releaseDate;
-        this.price = builder.price;
-    }
-
-    public static class Builder {
-        private String manufacturer;
-        private String deviceType;
-        private String deviceModel;
-        private String deviceColor;
-        private LocalDate releaseDate;
-        private BigDecimal price;
-
-        public Builder(){}
-
-        public Builder setManufacturer(String manufacturer) {
-            this.manufacturer = manufacturer;
-            return this;
-        }
-
-        public Builder setDeviceType(String deviceType) {
-            this.deviceType = deviceType;
-            return this;
-        }
-
-        public Builder setDeviceModel(String deviceModel) {
-            this.deviceModel = deviceModel;
-            return this;
-        }
-
-        public Builder setDeviceColor(String deviceColor) {
-            this.deviceColor = deviceColor;
-            return this;
-        }
-
-        public Builder setReleaseDate(LocalDate releaseDate) {
-            this.releaseDate = releaseDate;
-            return this;
-        }
-
-        public Builder setPrice(BigDecimal price) {
-            this.price = price;
-            return this;
-        }
-
-        public Device build() {
-            return new Device(this);
-        }
-    }
 
     public int getDeviceId() {
         return deviceId;
@@ -127,5 +76,66 @@ public class Device {
                 ", deviceColor= '" + deviceColor + '\'' +
                 ", releaseDate= " + releaseDate +
                 ", price= " + price + "";
+    }
+
+    /**
+     * Use of pattern builder to reduce string length and to be confident in order of device create
+     *
+     * @param builder
+     */
+
+    private Device(Builder builder) {
+        this.deviceId = atomicInteger.incrementAndGet();
+        this.manufacturer = builder.manufacturer;
+        this.deviceType = builder.deviceType;
+        this.deviceModel = builder.deviceModel;
+        this.deviceColor = builder.deviceColor;
+        this.releaseDate = builder.releaseDate;
+        this.price = builder.price;
+    }
+
+    public static class Builder {
+        private String manufacturer;
+        private String deviceType;
+        private String deviceModel;
+        private String deviceColor;
+        private LocalDate releaseDate;
+        private BigDecimal price;
+
+        public Builder(){}
+
+        public Builder setManufacturer(String manufacturer) {
+            this.manufacturer = manufacturer;
+            return this;
+        }
+
+        public Builder setDeviceType(String deviceType) {
+            this.deviceType = deviceType;
+            return this;
+        }
+
+        public Builder setDeviceModel(String deviceModel) {
+            this.deviceModel = deviceModel;
+            return this;
+        }
+
+        public Builder setDeviceColor(String deviceColor) {
+            this.deviceColor = deviceColor;
+            return this;
+        }
+
+        public Builder setReleaseDate(LocalDate releaseDate) {
+            this.releaseDate = releaseDate;
+            return this;
+        }
+
+        public Builder setPrice(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Device build() {
+            return new Device(this);
+        }
     }
 }

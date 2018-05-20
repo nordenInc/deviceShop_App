@@ -7,6 +7,11 @@ import ru.softwerke.tools.parsers.DateParser;
 
 import java.time.LocalDate;
 
+/**
+ * Controller for sale search with different params:
+ * (id, purchase date)
+ */
+
 public class SaleSearchController extends InitController {
 
     public void searchById(String id) {

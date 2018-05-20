@@ -1,15 +1,16 @@
 package ru.softwerke.controller.search;
 
 import ru.softwerke.controller.InitController;
-import ru.softwerke.model.Client;
 import ru.softwerke.model.dao.ClientList;
 import ru.softwerke.tools.ReadWriter;
 import ru.softwerke.tools.parsers.DateParser;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+
+/**
+ * Controller for client search with different params:
+ * (id, name, surname, birthday)
+ */
 
 public class ClientSearchController extends InitController {
 

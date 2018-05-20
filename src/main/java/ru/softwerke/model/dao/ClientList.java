@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Client data storage
+ */
+
 public class ClientList {
     private static List<Client> clientList = new ArrayList<>();
 
@@ -21,9 +25,23 @@ public class ClientList {
         }
     }
 
+    /**
+     * To search client in list by id
+     *
+     * @param id
+     * @return
+     */
+
     public Client search(int id) {
         return clientList.get(id);
     }
+
+    /**
+     * To check if client exists in list
+     *
+     * @param id
+     * @return statement
+     */
 
     public static boolean exist(int id) {
         int value = clientList
@@ -34,6 +52,12 @@ public class ClientList {
         if (value > 0) {return true;}
         else return false;
     }
+
+    /**
+     * Use for sort and search, in purpose not to change original client list
+     *
+     * @return client stream
+     */
 
     public static Stream<Client> getClientStream() {
         return clientList.stream();

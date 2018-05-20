@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Sale entity
+ */
+
 public class Sale {
 
     private static AtomicInteger atomicInteger = new AtomicInteger(0);

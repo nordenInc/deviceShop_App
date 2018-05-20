@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Controller for client sort with params:
+ * (name, surname, birthday)
+ */
 
 public class ClientSortController extends InitController {
 

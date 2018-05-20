@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Device data storage
+ */
+
 public class DeviceList {
     private static List<Device> deviceList = new ArrayList<>();
 
@@ -21,9 +25,23 @@ public class DeviceList {
         }
     }
 
+    /**
+     * To search device in list by id
+     *
+     * @param id
+     * @return
+     */
+
     public static Device getDevice(int id) {
          return deviceList.get(id);
     }
+
+    /**
+     * To check if device exists in list
+     *
+     * @param id
+     * @return statement
+     */
 
     public static boolean exist(int id) {
         int value = deviceList
@@ -34,6 +52,12 @@ public class DeviceList {
         if (value > 0) {return true;}
         else return false;
     }
+
+    /**
+     * Use for sort and search, in purpose not to change original device list
+     *
+     * @return device stream
+     */
 
     public static Stream<Device> getDeviceStream() {
         return deviceList.stream();
