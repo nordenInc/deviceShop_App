@@ -68,7 +68,7 @@ public class ClientMenu implements Returner {
 
     private void deleteClient() {
         ReadWriter.printLine("Enter client id:");
-        int id = Integer.parseInt(ReadWriter.readLine());
+        String id = ReadWriter.readLine();
         new ClientController().delete(id);
     }
 

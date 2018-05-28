@@ -19,6 +19,10 @@ public class ClientList {
         return clientList;
     }
 
+    public List<Client> getClientsListT() {
+        return clientList;
+    }
+
     public static void showClientsList() {
         for (Client client: clientList) {
             ReadWriter.printLine(client);

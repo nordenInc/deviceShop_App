@@ -27,21 +27,26 @@ public class ClientController extends InitController {
      */
 
     public void create(String firstName, String lastName, String middleName, String localDate) {
-        try{
-            LocalDate birthDate = DateParser.getDate(localDate);
+        if(!("".equals(firstName) || "".equals(lastName) || "".equals(middleName))) {
+            try {
+                LocalDate birthDate = DateParser.getDate(localDate);
 
-            ClientList.getClientsList().add(new Client.Builder()
-                    .setFirstName(firstName)
-                    .setLastName(lastName)
-                    .setBirthDate(birthDate)
-                    .setMiddleName(middleName)
-                    .build());
-            ReadWriter.printLine("Client was created");
-            ClientList.showClientsList();
-            initMenu.showInitMenu();
-        } catch (DateTimeParseException e) {
-            ReadWriter.printLine("Wrong entry, new client was not created. \n" +
-                                            "Please, write the date as 'dd/MM/yyyy'. \n");
+                ClientList.getClientsList().add(new Client.Builder()
+                        .setFirstName(firstName)
+                        .setLastName(lastName)
+                        .setBirthDate(birthDate)
+                        .setMiddleName(middleName)
+                        .build());
+                ReadWriter.printLine("Client was created");
+                ClientList.showClientsList();
+                initMenu.showInitMenu();
+            } catch (DateTimeParseException e) {
+                ReadWriter.printLine("Wrong entry, new client was not created. \n" +
+                        "Please, write the date as 'dd/MM/yyyy'. \n");
+                initMenu.showInitMenu();
+            }
+        } else {
+            ReadWriter.printLine("Wrong entry, new client was not created.");
             initMenu.showInitMenu();
         }
     }
@@ -52,10 +57,16 @@ public class ClientController extends InitController {
      * @param id
      */
 
-    public void delete(int id) {
-        ClientList.getClientsList().remove(id);
-        ReadWriter.printLine("Client was deleted");
-        initMenu.showInitMenu();
+    public void delete(String id) {
+        int idP = Integer.parseInt(id);
+        if (!("".equals(id))) {
+            ClientList.getClientsList().remove(idP);
+            ReadWriter.printLine("Client was deleted");
+            initMenu.showInitMenu();
+        } else {
+            ReadWriter.printLine("Client was not deleted!");
+            initMenu.showInitMenu();
+        }
     }
 
     /**
